@@ -1,0 +1,16 @@
+header {
+  background-image: url(img/hero.jpg);
+  height: 400px;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.grid {
+  width: 80%;
+}
+
+.top {
+  margin: 0px 20px 0px 10px;
+}
