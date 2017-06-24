@@ -19,3 +19,13 @@ header {
 .galv-logo {
   margin-left: 10px;
 }
+
+.empty-order {
+  margin-top: 10px;
+  width: 140px;
+  font-size: 10px;
+}
+
+.order-add-btn {
+  cursor: pointer;
+}

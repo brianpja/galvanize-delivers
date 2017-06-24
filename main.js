@@ -1,10 +1,9 @@
-
 //this first clickk event does everything when you click a card to build your order
 $('.card').on('click', 'a', function(event) {
   console.log('clicking');
 
   addItemToOrder(getOrderData(event, '.card-title'), getOrderData(event, '.card-price'));
-  updateSubtotal(event);
+  // updateSubtotal(event);
   updateTaxAndTotal(updateSubtotal(event));
 });
 
@@ -13,7 +12,7 @@ function addItemToOrder(name, price) {
   const $tr = $('<tr>');
   const $item = $('<td>').text(name)
   const $price = $('<td>').text(price).addClass('right order-price');
-  const $orderTable = $('.order-table');
+  const $orderTable = $('.order-table').children('tbody');
   $tr.append($item);
   $tr.append($price);
   $orderTable.append($tr);
@@ -30,7 +29,7 @@ function getOrderData(event, selector) {
 function updateSubtotal(event) {
   const orderPrices = $('.order-price');
   let pricesArray = [];
-  for (let i = 0; i < orderPrices.length; i++){
+  for (let i = 0; i < orderPrices.length; i++) {
     pricesArray.push(orderPrices.eq(i).text());
   }
   const subtotalValue = sumPrices(pricesArray);
@@ -62,3 +61,26 @@ function updateTaxAndTotal(price) {
   const totalLocation = $('.total-amount');
   totalLocation.text('$' + (tax + numberPrice).toFixed(2));
 }
+
+//place order click event
+$('.place-order').on('click', function(event) {
+  console.log('ordering');
+  if ($('.subtotal-amount').text() === '$0.00') {
+    Materialize.toast('Invalid order! Please add a menu item.', 4000);
+  } else if ($('#icon_prefix').val().length === 0) {
+    Materialize.toast('Invalid order! Please add a name.', 4000);
+  } else if ($('#icon_telephone').val().length < 10) {
+    Materialize.toast('Invalid order! Please add a phone number.', 4000);
+  } else if ($('#icon_address').val().length === 0) {
+    Materialize.toast('Ivalid order! Please add an address.', 4000);
+  } else {
+    Materialize.toast('Success! Thank you for ordering.', 4000);
+  }
+});
+
+//empty order form click event
+$('.empty-order').on('click', function(event) {
+  console.log('empty');
+  $('.order-table tbody').empty();
+  updateTaxAndTotal(updateSubtotal());
+});
