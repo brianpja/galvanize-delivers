@@ -1,3 +1,9 @@
+//this function creates the collapsible navbar
+$( document ).ready(function(){
+  $(".button-collapse").sideNav();
+});
+
+
 //this first clickk event does everything when you click a card to build your order
 $('.card').on('click', 'a', function(event) {
   console.log('clicking');
