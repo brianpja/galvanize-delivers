@@ -7,16 +7,24 @@ header {
   justify-content: center;
 }
 
-
-.top {
-  margin: 0px 20px 0px 10px;
+.galv-logo {
+  margin-left: 10px;
 }
 
 .menu {
   margin-left: 10px;
 }
 
-.galv-logo {
+.main {
+  margin-top: 40px;
+}
+
+.para-head {
+  display: flex;
+  align-items: center;
+}
+
+.para-title {
   margin-left: 10px;
 }
 
