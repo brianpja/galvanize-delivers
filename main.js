@@ -68,7 +68,7 @@ function updateTaxAndTotal(price) {
   totalLocation.text('$' + (tax + numberPrice).toFixed(2));
 }
 
-//place order click event
+//place order click event with validation
 $('.place-order').on('click', function(event) {
   console.log('ordering');
   if ($('.subtotal-amount').text() === '$0.00') {
